@@ -11,12 +11,15 @@ class Medico extends Pessoa{
 
 	private $CRM, $especialidade;
 
-	public function __construct($nome, $crm,$especialidade,$idade=null)
+	public function __construct($nome, $crm,$especialidade,$idade=null,$altura=1, $peso=1)
 	{
 		$this->nome = $nome;
 		$this->CRM = $crm;
 		$this->especialidade = $especialidade;
 		$this->idade = $idade;
+		$this->peso = $peso;
+		$this->altura = $altura;
+		$this->calcImc();
 	}
 
 	public function getCRM(){
@@ -29,6 +32,7 @@ class Medico extends Pessoa{
 		return 	"\n=== Dados de $className ==="
 			. "\nHerança: ".parent::class
 			. "\nAtributos:"
+			. "\nIMC: ".$this->imc
 			. "\n\tNome: $this->nome"
 			. ($this->idade ? "\n\tIdade: $this->idade" : "")
 			. "\n\tEspecialidade: $this->especialidade"

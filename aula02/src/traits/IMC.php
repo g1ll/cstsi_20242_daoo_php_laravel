@@ -2,6 +2,7 @@
 
 namespace Daoo\Aula02\traits;
 
+//class
 trait IMC
 {
 	protected float | null $imc;
