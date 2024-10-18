@@ -36,4 +36,12 @@ class Pessoa
 		echo "\nO IMC do $this->nome é: " . number_format($this->imc, 2) . "\n";
 		
 	}
+
+    function setImc($valor){
+        $this->imc = $valor;
+    }
+
+    function getImc(){
+        return $this->imc;
+    }
 }
