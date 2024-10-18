@@ -1,3 +1,9 @@
 <?php
 
-echo "Olá Mundo!!!";
+// echo __DIR__;
+
+require "../vendor/autoload.php";
+
+
+// require "exemplo_03_utils_var_dump.php";
+require "exemplo_04_abstract.php";

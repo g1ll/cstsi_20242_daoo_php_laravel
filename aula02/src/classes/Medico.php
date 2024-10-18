@@ -1,11 +1,11 @@
 <?php
 namespace Daoo\Aula02\classes;
 
-// use Daoo\Aula02\classes\Abstracts\Pessoa;
+use Daoo\Aula02\classes\Abstracts\Pessoa;
 use Daoo\Aula02\traits\IMC;
-use Daoo\Aula02\classes\Pessoa;
+// use Daoo\Aula02\classes\Pessoa;
 
-class Medico extends Pessoa {
+class Medico extends Pessoa{
 
 	use IMC;
 

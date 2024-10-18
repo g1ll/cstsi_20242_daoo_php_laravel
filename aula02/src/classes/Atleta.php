@@ -1,7 +1,7 @@
 <?php
 namespace Daoo\Aula02\classes;
 
-use Daoo\Aula02\classes\Pessoa;
+use Daoo\Aula02\classes\Abstracts\Pessoa;
 use Daoo\Aula02\interfaces\IMC;
 use Exception;
 
