@@ -12,7 +12,13 @@
             "email": "gillvelleda@gmail.com"
         }
     ],
+    "scripts":{
+        "dev":"php -S localhost:8080 -t src/"
+    },
     "require": {
         "brandonwamboldt/utilphp": "^1.1"
+    },
+    "require-dev": {
+        "psy/psysh": "^0.12.4"
     }
 }
