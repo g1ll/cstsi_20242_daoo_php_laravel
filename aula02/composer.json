@@ -20,5 +20,8 @@
     },
     "require-dev": {
         "psy/psysh": "^0.12.4"
+    },
+    "config": {
+        "process-timeout":0
     }
 }
