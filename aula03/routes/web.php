@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,8 +14,11 @@ Route::get('/ola', function () {
 
 Route::get('/hello',function(){
     return view('hello_page',
-        ["message"=>"Hello World!!"]);
+        ["message"=>"Hello World!!"]
+    );
 });
+
+Route::get('/home',[HomeController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
