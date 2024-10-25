@@ -16,4 +16,14 @@ class ProdutoController extends Controller
         $listaProdutos = Produto::all();
         return view('produto.index',["data"=>$listaProdutos]);
     }
+
+    public function show($id){
+        $produto = Produto::find($id);
+        // echo Produto::where('id',$id)->toSql();//roda internamente o sql
+        //dd($produto); //mostra os dados de $produto (var_dump e die)
+
+        return view('produto.show',[
+                "produto"=>$produto
+            ]);
+    }
 }

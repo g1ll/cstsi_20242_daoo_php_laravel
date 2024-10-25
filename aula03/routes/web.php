@@ -22,6 +22,7 @@ Route::get('/hello',function(){
 Route::get('/home',[HomeController::class,'index']);
 
 Route::get('/produtos',[ProdutoController::class,'index']);
+Route::get('/produtos/{id}',[ProdutoController::class,'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -22,7 +22,9 @@
         <tbody>
             @foreach($data as $produto)
             <tr>
-                <td>{{$produto->id}}</td>
+                <td>
+                    {{$produto->id}}
+                </td>
                 <td>{{$produto->nome}}</td>
                 <td>{{$produto->qtd_estoque}}</td>
                 <td>{{$produto->preco}}</td>
