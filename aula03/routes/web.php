@@ -21,8 +21,11 @@ Route::get('/hello',function(){
 
 Route::get('/home',[HomeController::class,'index']);
 
-Route::get('/produtos',[ProdutoController::class,'index']);
-Route::get('/produtos/{id}',[ProdutoController::class,'show']);
+Route::get('/produtos',[ProdutoController::class,'index'])->name("produto.index");
+Route::get(
+    '/produtos/{id}',
+    [ProdutoController::class,'show']
+)->name("produto.show");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

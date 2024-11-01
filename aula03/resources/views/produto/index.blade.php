@@ -23,7 +23,8 @@
             @foreach($data as $produto)
             <tr>
                 <td>
-                    {{$produto->id}}
+                    {{-- <a href="/produtos/{{$produto->id}}">{{$produto->id}}</a> --}}
+                    <a href="{{route("produto.show",$produto->id)}}">{{$produto->id}}</a>
                 </td>
                 <td>{{$produto->nome}}</td>
                 <td>{{$produto->qtd_estoque}}</td>
