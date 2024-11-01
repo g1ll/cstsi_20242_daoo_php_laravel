@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProfileController;
@@ -23,7 +24,7 @@ Route::get('/home',[HomeController::class,'index']);
 
 Route::get('/produtos',[ProdutoController::class,'index'])->name("produto.index");
 Route::get(
-    '/produtos/{id}',
+    '/produtos/{produto}',
     [ProdutoController::class,'show']
 )->name("produto.show");
 
@@ -43,9 +44,6 @@ Route::get('/produto/{id}/edit',
 Route::post('/produto/{id}/update',
     [ProdutoController::class,'update']
 )->name("produto.update");
-
-
-
 
 
 Route::get('/dashboard', function () {

@@ -25,10 +25,10 @@ class ProdutoController extends Controller
         // return View::make('produto.index',["data"=>$listaProdutos]);
     }
 
-    public function show($id)
+    public function show(Produto $produto)
     {
         // dd($id);
-        $produto = Produto::find($id);
+        // $produto = Produto::find($id);
         // dd($produto);
         // DB::table('produtos')->where('id',$id)->get();//NÃO PODE
         // Produto::where('')->join()//EMENTA DA DISCIPLINA EH ORM
