@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Produtos</h1>
+    <a href="/produto">Criar novo Produto</a>
     @if ($data->count()>0)
     <table>
         <thead>
