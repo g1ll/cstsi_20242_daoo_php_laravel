@@ -27,6 +27,16 @@ Route::get(
     [ProdutoController::class,'show']
 )->name("produto.show");
 
+Route::get('/produto',
+    [ProdutoController::class,'create']
+)->name("produto.create");
+
+Route::post('/produto',
+    [ProdutoController::class,'store']
+)->name("produto.store");
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
