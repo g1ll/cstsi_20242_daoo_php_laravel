@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
@@ -66,6 +67,31 @@ class ProdutoController extends Controller
             return redirect(route("produto.index"));
         } else {
             dd("Erro ao inserir no banco!!!");
+        }
+    }
+
+    public function edit($id)
+    {
+        try{
+            return view('produto.edit',[
+                    "produto"=>Produto::findOrFail($id)
+                ]);
+        }catch(Exception $error){
+            dd($error);
+        }
+    }
+
+    public function update(Request $request,$id)
+    {
+        $produto = $request->all(); //Formulario POST -> $_POST
+        $produto['importado'] = $request->has('importado');
+        // dd($produto);
+
+        //Atualizar no banco com o Eloquent metodo update([])
+        if (Produto::find($id)->update($produto)) {
+            return redirect(route("produto.index"));
+        } else {
+            dd("Erro ao atualizar no banco!!!");
         }
     }
 }

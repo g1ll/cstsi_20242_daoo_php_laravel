@@ -36,6 +36,17 @@ Route::post('/produto',
 )->name("produto.store");
 
 
+Route::get('/produto/{id}/edit',
+    [ProdutoController::class,'edit']
+)->name("produto.edit");
+
+Route::post('/produto/{id}/update',
+    [ProdutoController::class,'update']
+)->name("produto.update");
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

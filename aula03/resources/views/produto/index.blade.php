@@ -31,6 +31,9 @@
                 <td>{{$produto->qtd_estoque}}</td>
                 <td>{{$produto->preco}}</td>
                 <td>{{($produto->importado)?'Sim':'Não'}}</td>
+                <td>
+                    <a href="/produto/{{$produto->id}}/edit" target="_blank">editar</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
