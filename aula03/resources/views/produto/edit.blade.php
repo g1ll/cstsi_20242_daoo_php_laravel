@@ -12,6 +12,8 @@
     <h1>Insert new Produto</h1>
     <form action="{{route('produto.update',$produto->id)}}" method="POST">
         @csrf
+
+        <input type='hidden' name="_method" value="put"/>
         <table>
             <tr>
                 <td>Nome:</td>
