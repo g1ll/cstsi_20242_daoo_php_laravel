@@ -22,28 +22,17 @@ Route::get('/hello',function(){
 
 Route::get('/home',[HomeController::class,'index']);
 
-Route::get('/produtos',[ProdutoController::class,'index'])->name("produto.index");
-Route::get(
-    '/produtos/{produto}',
-    [ProdutoController::class,'show']
-)->name("produto.show");
+Route::prefix('/produtos')->group(function () {
+    Route::get('/', [ProdutoController::class, 'index'])->name("produto.index");
+    Route::get('/{id}',[ProdutoController::class, 'show'])->name("produto.show");
+});
 
-Route::get('/produto',
-    [ProdutoController::class,'create']
-)->name("produto.create");
-
-Route::post('/produto',
-    [ProdutoController::class,'store']
-)->name("produto.store");
-
-
-Route::get('/produto/{id}/edit',
-    [ProdutoController::class,'edit']
-)->name("produto.edit");
-
-Route::post('/produto/{id}/update',
-    [ProdutoController::class,'update']
-)->name("produto.update");
+Route::prefix('/produto')->group(function () {
+    Route::get('/',[ProdutoController::class, 'create'] )->name("produto.create");
+    Route::post('/',[ProdutoController::class, 'store'])->name("produto.store");
+    Route::get('/{id}/edit',[ProdutoController::class, 'edit'])->name("produto.edit");
+    Route::post('/{id}/update',[ProdutoController::class, 'update'])->name("produto.update");
+});
 
 
 Route::get('/dashboard', function () {
