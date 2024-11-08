@@ -20,18 +20,13 @@ Route::get('/hello',function(){
     );
 });
 
-Route::get('/home',[HomeController::class,'index']);
-
-Route::prefix('/produtos')->group(function () {
-    Route::get('/', [ProdutoController::class, 'index'])->name("produto.index");
-    Route::get('/{id}',[ProdutoController::class, 'show'])->name("produto.show");
-});
-
-Route::prefix('/produto')->group(function () {
-    Route::get('/',[ProdutoController::class, 'create'] )->name("produto.create");
-    Route::post('/',[ProdutoController::class, 'store'])->name("produto.store");
-    Route::get('/{id}/edit',[ProdutoController::class, 'edit'])->name("produto.edit");
-    Route::post('/{id}/update',[ProdutoController::class, 'update'])->name("produto.update");
+Route::controller(ProdutoController::class)->group(function(){
+    Route::get('/produtos','index')->name("produto.index");
+    Route::get('/produtos/{produto}','show')->name("produto.show");
+    Route::get('/produto','create')->name("produto.create");
+    Route::post('/produto','store')->name("produto.store");
+    Route::get('/produto/{id}/edit','edit')->name("produto.edit");
+    Route::post('/produto/{id}/update','update')->name("produto.update");
 });
 
 
