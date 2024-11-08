@@ -28,12 +28,15 @@ class ProdutoController extends Controller
     public function show(Produto $produto)
     {
         // dd($id);
-        // $produto = Produto::find($id);
+        // $produto = Produto::find($produto);
         // dd($produto);
         // DB::table('produtos')->where('id',$id)->get();//NÃO PODE
         // Produto::where('')->join()//EMENTA DA DISCIPLINA EH ORM
         // echo Produto::where('id',$id)->toSql();//roda internamente o sql
         //dd($produto); //mostra os dados de $produto (var_dump e die)
+
+        //Route Model Binding
+        // dd($produto);
 
         return view('produto.show', [
             "produto" => $produto
@@ -83,6 +86,7 @@ class ProdutoController extends Controller
 
     public function update(Request $request,$id)
     {
+        // dd($request->all());
         $produto = $request->all(); //Formulario POST -> $_POST
         $produto['importado'] = $request->has('importado');
         // dd($produto);
