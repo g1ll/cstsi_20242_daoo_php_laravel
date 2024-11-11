@@ -38,10 +38,6 @@ class ProdutoController extends Controller
             $produto = $request->all();
             $produto['importado'] = $request->has('importado');
             $produtoCriado = Produto::create($produto);
-            // return response()->json([
-            //     "message" => 'Produto Criado!!!',
-            //     "data" => $produtoCriado
-            // ], 201);
             return (new ProdutoResource($produtoCriado))
                     ->additional(["message" => 'Produto Criado!!!'])
                     ->response()
