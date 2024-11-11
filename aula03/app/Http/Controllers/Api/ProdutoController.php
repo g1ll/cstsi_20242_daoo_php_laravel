@@ -28,17 +28,23 @@ class ProdutoController extends Controller
     {
 
         try {
-            $request->validate(["preco" => "required | numeric | min:1.99"]);
+            $request->validate([
+                "nome" => "required | max: 10",
+                "importado" => "nullable | boolean",
+                "qtd_estoque" => "required | numeric | min:2",
+                "descricao" => "required | max:500",
+                "preco" => "required | numeric | min:1.99"
+            ]);
             $produto = $request->all();
             $produto['importado'] = $request->has('importado');
             $produtoCriado = Produto::create($produto);
-                return response()->json([
-                    "message" => 'Produto Criado!!!',
-                    "data" => $produtoCriado
-                ], 201);
+            return response()->json([
+                "message" => 'Produto Criado!!!',
+                "data" => $produtoCriado
+            ], 201);
         } catch (Exception $error) {
             $httpStatus = 500;
-            if($error instanceof ValidationException){
+            if ($error instanceof ValidationException) {
                 //executar outras tarefas relacionadas..
                 throw $error;
             }
