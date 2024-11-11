@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ProdutoCollection;
 use App\Http\Resources\ProdutoResource;
 use App\Models\Produto;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ProdutoController extends Controller
 {
@@ -25,17 +27,22 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate(["preco"=>"required | numeric | min:1.99"]);
-        $produto = $request->all();
-        $produto['importado'] = $request->has('importado');
-        $produtoCriado = Produto::create($produto);
-        if($produtoCriado){
-            return response()->json([
-                "message"=>'Produto Criado!!!',
-                "data"=>$produtoCriado
-            ],201);
-        }else{
-            return response()->json('Erro ao criar novo produto!!!',500);
+        try {
+            $request->validate(["preco" => "required | numeric | min:1.99"]);
+            $produto = $request->all();
+            $produto['importado'] = $request->has('importado');
+            $produtoCriado = Produto::create($produto);
+                return response()->json([
+                    "message" => 'Produto Criado!!!',
+                    "data" => $produtoCriado
+                ], 201);
+        } catch (Exception $error) {
+            $httpStatus = 500;
+            if($error instanceof ValidationException){
+                //executar outras tarefas relacionadas..
+                throw $error;
+            }
+            return response()->json('Erro ao criar novo produto!!!', $httpStatus);
         }
     }
 
