@@ -25,6 +25,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate(["preco"=>"required | numeric | min:1.99"]);
         $produto = $request->all();
         $produto['importado'] = $request->has('importado');
         $produtoCriado = Produto::create($produto);
