@@ -42,12 +42,10 @@ class ProdutoController extends Controller
                 "message" => 'Produto Criado!!!',
                 "data" => $produtoCriado
             ], 201);
-        } catch (Exception $error) {
+        }catch(ValidationException $error){
+            throw $error;
+        }catch (Exception $error) {
             $httpStatus = 500;
-            if ($error instanceof ValidationException) {
-                //executar outras tarefas relacionadas..
-                throw $error;
-            }
             return response()->json('Erro ao criar novo produto!!!', $httpStatus);
         }
     }
