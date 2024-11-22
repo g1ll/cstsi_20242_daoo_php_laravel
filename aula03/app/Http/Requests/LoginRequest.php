@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
@@ -25,5 +26,11 @@ class LoginRequest extends FormRequest
             'email' => 'required|email|exists:users',
             'password' => 'required',
         ];
+    }
+
+    protected function passedValidation(): void
+    {
+        $user = User::where('email', $this->input('email'))->first();
+        $this->merge(['user' => $user]);
     }
 }
