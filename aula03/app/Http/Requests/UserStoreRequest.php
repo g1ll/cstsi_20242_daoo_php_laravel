@@ -46,6 +46,6 @@ class UserStoreRequest extends FormRequest
 
     protected function passedValidation(): void
     {
-        $this->merge(['password' => Hash::make($this->input('password'))]);
+        $this->merge(['password' => Hash::make($this->password)]);
     }
 }
