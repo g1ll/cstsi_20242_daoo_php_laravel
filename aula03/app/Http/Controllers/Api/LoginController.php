@@ -11,10 +11,7 @@ class LoginController extends Controller
 {
     public function login(LoginRequest $request){
         try{
-            $user = $request->user;
-            $token = $user->createToken('token')->plainTextToken;
-            // return response()->json(['token' => $token]);
-            // return response()->json(compact('token'));
+            $token = $request->user->createToken('token')->plainTextToken;
             return compact('token');
         }catch(Exception $error){
             $this->errorHandler('Erro ao realizar login!!!',$error);

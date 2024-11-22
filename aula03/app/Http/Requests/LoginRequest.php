@@ -14,7 +14,8 @@ class LoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $this->merge(['user' => User::where('email', $this->email)->first()]);
+        return Hash::check($this->password,$this->user->password);
     }
 
     /**
@@ -28,13 +29,5 @@ class LoginRequest extends FormRequest
             'email' => 'required|email|exists:users',
             'password' => 'required',
         ];
-    }
-
-    protected function passedValidation(): void
-    {
-        $user = User::where('email', $this->email)->first();
-        if(!Hash::check($this->password,$user->password))
-            throw new Exception('Credenciais inválidas!!!');
-        $this->merge(['user' => $user]);
     }
 }
