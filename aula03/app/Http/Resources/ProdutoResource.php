@@ -16,11 +16,11 @@ class ProdutoResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            "nome" => $request->nome,
-            "origem" => $request->importado?"Importado":"Nacional",
-            "QtdEstoque" => $request->qtd_estoque,
-            "descricao" => $request->descricao,
-            "preco" => "R$ ".number_format($request->preco,2),
+            "nome" => $this->nome,
+            "origem" => $this->importado?"Importado":"Nacional",
+            "QtdEstoque" => $this->qtd_estoque,
+            "descricao" => $this->descricao,
+            "preco" => "R$ ".number_format($this->preco,2),
         ];
     }
 }
