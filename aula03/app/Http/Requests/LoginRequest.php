@@ -15,6 +15,7 @@ class LoginRequest extends FormRequest
     public function authorize(): bool
     {
         $this->merge(['user' => User::where('email', $this->email)->first()]);
+        if(!$this->user) return false;
         return Hash::check($this->password,$this->user->password);
     }
 
