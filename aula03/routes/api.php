@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 //Liberando apenas as rotas index e show
 Route::apiResource('/produtos', ProdutoController::class)->only(['index', 'show']);
-Route::apiResource('/users', UserController::class)->only(['index', 'show']);
+Route::apiResource('/users', UserController::class)->only(['store']);
 
 
 Route::controller(LoginController::class)->group(function () {
