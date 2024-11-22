@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserStoreRequest extends FormRequest
 {
@@ -41,5 +42,10 @@ class UserStoreRequest extends FormRequest
             'password.min'      => 'A senha deve ter no mínimo oito caracteres!',
             'password.require'  => 'A senha é obrigatória!!',
         ];
+    }
+
+    protected function passedValidation(): void
+    {
+        $this->merge(['password' => Hash::make($this->input('password'))]);
     }
 }

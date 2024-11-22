@@ -26,10 +26,7 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-
         try {
-            $userParams = $request->validated();
-            $userParams['password'] = Hash::make($userParams['password']);
             return (new UserResource(User::create($request->validated())))
                     ->additional(['message' => 'Usuário criado com sucesso!!!']);
         }catch (Exception $error){
