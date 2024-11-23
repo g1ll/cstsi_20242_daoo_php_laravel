@@ -44,8 +44,9 @@ class UserStoreRequest extends FormRequest
         ];
     }
 
-    protected function passedValidation(): void
-    {
-        $this->merge(['password' => Hash::make($this->password)]);
-    }
+    //Não há necessidade deste método, pois a senha é criptografada nos casts do model User
+    // protected function passedValidation(): void
+    // {
+    //     $this->merge(['password' => Hash::make($this->password)]);
+    // }
 }
