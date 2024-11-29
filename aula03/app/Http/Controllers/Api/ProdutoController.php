@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
 use App\Http\Requests\ProdutoStoreRequest;
+use App\Http\Requests\ProdutoUpdateRequest;
 use App\Http\Resources\ProdutoCollection;
 use App\Http\Resources\ProdutoResource;
 use App\Http\Resources\ProdutoStoredResource;
@@ -20,6 +21,7 @@ class ProdutoController extends Controller
     public function index()
     {
         // return response()->json(Produto::all());
+        // return response()->json(Produto::all());
         return new ProdutoCollection(Produto::all());
     }
 
@@ -28,7 +30,6 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoStoreRequest $request)
     {
-
         try {
             return new ProdutoStoredResource(Produto::create($request->validated()));
         }catch (Exception $error){
@@ -48,7 +49,7 @@ class ProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produto $produto)
+    public function update(ProdutoUpdateRequest $request, Produto $produto)
     {
         try {
             $produto->update($request->validated());

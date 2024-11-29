@@ -16,6 +16,7 @@ class ProdutoResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
+            "id" => $this->id,
             "nome" => $this->nome,
             "origem" => $this->importado?"Importado":"Nacional",
             "QtdEstoque" => $this->qtd_estoque,
