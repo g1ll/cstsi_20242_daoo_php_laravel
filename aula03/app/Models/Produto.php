@@ -15,6 +15,7 @@ class Produto extends Model
         "descricao",
         "qtd_estoque",
         "preco",
+        "importado",
         "fornecedor_id"
     ];
 
