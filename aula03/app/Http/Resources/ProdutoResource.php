@@ -22,6 +22,7 @@ class ProdutoResource extends JsonResource
             "QtdEstoque" => $this->qtd_estoque,
             "descricao" => $this->descricao,
             "preco" => "R$ ".number_format($this->preco,2),
+            'fornecedor' => FornecedorResource::make($this->whenLoaded('fornecedor'))
         ];
     }
 }

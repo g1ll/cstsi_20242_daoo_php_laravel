@@ -56,4 +56,19 @@ class FornecedorController extends Controller
     {
         //
     }
+
+    public function porRegiao($nome)
+    {
+        return new FornecedorCollection(
+            Fornecedor::whereHas(
+                'estado',
+                fn($q) => $q->whereHas(
+                    'regiao',
+                    fn($q) => $q->where('nome', 'like', $nome)
+                )
+            )
+            ->get()
+            ->load('estado.regiao')
+        );
+    }
 }
