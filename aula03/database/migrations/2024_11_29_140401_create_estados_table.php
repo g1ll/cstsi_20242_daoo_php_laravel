@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('estados', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('regiao_id')
+            $table->foreignId('regiao_id')//regiao -> regioes
                 ->references('id')->on('regioes')
                 ->cascadeOnDelete();
             $table->integer('codigouf');
