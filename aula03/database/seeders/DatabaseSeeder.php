@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Fornecedor;
+use App\Models\Produto;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -27,8 +28,13 @@ class DatabaseSeeder extends Seeder
             EstadoSeeder::class,
         ]);
 
-        Fornecedor::factory(5)
-                ->hasProdutos(10)
+        Fornecedor::factory(50)
+                ->hasProdutos(100)
                 ->create();
+
+        $this->call([
+                PromocaoSeeder::class,
+                ProdutoPromocaoSeeder::class,
+            ]);
     }
 }
