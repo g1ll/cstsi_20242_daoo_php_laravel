@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\FornecedorController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\ProdutoController;
 use App\Http\Controllers\Api\UserController;
@@ -9,7 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
 
 
 // // Only é após registro de todas as rotas COM  middleware
@@ -27,12 +27,17 @@ Route::get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/produtos', ProdutoController::class);
     Route::apiResource('/users', UserController::class);
+    Route::apiResource('/fornecedores', FornecedorController::class)
+    ->except(['index', 'show'])
+    ->parameters(['fornecedores' => 'fornecedor']);
 });
 
 //Liberando apenas as rotas index e show
 Route::apiResource('/produtos', ProdutoController::class)->only(['index', 'show']);
 Route::apiResource('/users', UserController::class)->only(['store']);
-
+Route::apiResource('/fornecedores', FornecedorController::class)
+    ->only(['index', 'show'])
+    ->parameters(['fornecedores' => 'fornecedor']);
 
 Route::controller(LoginController::class)->group(function () {
     Route::post('/login', 'login');
