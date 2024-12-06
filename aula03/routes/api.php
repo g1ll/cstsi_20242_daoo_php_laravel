@@ -43,3 +43,5 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/login', 'login');
     Route::post('/logout', 'logout')->middleware('auth:sanctum');
 });
+
+require __DIR__.'/queries.php';
