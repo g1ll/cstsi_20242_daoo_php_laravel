@@ -24,6 +24,8 @@ class ProdutoStoreRequest extends FormRequest
         return [
             "nome" => "required | max: 10",
             "importado" => "nullable | boolean",
+            "imagem" => "nullable | image",
+            "fornecedor_id"=> "required | exists:fornecedores,id",
             "qtd_estoque" => "required | numeric | min:2",
             "descricao" => "required | max:500",
             "preco" => "required | numeric | min:1.99"

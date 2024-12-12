@@ -24,6 +24,7 @@ class ProdutoUpdateRequest extends FormRequest
         return [
             "nome" => "nullable | max: 10",
             "importado" => "nullable | boolean",
+            "imagem" => "nullable | image",
             "qtd_estoque" => "nullable | numeric | min:2",
             "descricao" => "nullable | max:500",
             "preco" => "nullable | numeric | min:1.99"
