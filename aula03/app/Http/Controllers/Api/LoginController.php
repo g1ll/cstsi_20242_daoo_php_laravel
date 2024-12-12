@@ -11,8 +11,10 @@ class LoginController extends Controller
 {
     public function login(LoginRequest $request){
         try{
-            $token = $request->user->createToken('token')->plainTextToken;
-            return compact('token');
+            $user = $request->user;
+            if(!$user) throw new \Exception("Erro ao efetuar login!");
+            $token = $user->createToken('token')->plainTextToken;
+            return compact('token','user');
         }catch(Exception $error){
             $this->errorHandler('Erro ao realizar login!!!',$error);
         }

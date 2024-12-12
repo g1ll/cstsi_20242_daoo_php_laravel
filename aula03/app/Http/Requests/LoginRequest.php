@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Models\User;
 use Exception;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginRequest extends FormRequest
@@ -14,7 +15,8 @@ class LoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $this->merge(['user' => User::where('email', $this->email)->first()]);
-        return ($this->user && Hash::check($this->password,$this->user->password));
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password]))
+            $this->merge(['user' => User::where('email', $this->email)->first()]);
+        return true;
     }
 }
