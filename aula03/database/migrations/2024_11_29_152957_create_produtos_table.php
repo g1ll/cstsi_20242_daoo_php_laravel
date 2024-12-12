@@ -18,6 +18,7 @@ return new class extends Migration
             ->cascadeOnDelete();
             $table->string('nome');
             $table->text('descricao');
+            $table->text('imagem')->nullable();
             $table->float('preco');
             $table->integer('qtd_estoque');
             $table->boolean('importado')->default(false);
