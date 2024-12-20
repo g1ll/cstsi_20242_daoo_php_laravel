@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
             EstadoSeeder::class,
         ]);
 
-        Fornecedor::factory(50)
-                ->hasProdutos(100)
+        Fornecedor::factory(10)
+                ->hasProdutos(10)
                 ->create();
 
         $this->call([

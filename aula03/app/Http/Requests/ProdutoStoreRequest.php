@@ -22,7 +22,7 @@ class ProdutoStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "nome" => "required | max: 10",
+            "nome" => "required | max: 50",
             "importado" => "nullable | boolean",
             "imagem" => "nullable | image",
             "fornecedor_id"=> "required | exists:fornecedores,id",

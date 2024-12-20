@@ -38,7 +38,7 @@ class Arbitro extends Pessoa implements IMC{
 	public function showImc():void
 	{
 		if(is_numeric($this->imc))
-			echo "\nO IMC do $this->cargo $this->nome é: " . number_format($this->imc, 1) . "\n";
+			echo "\nO IMC do Arbitro $this->cargo $this->nome é: " . number_format($this->imc, 1) . "\n";
 	}
 
 	public function setAltura(float $altura){
@@ -70,7 +70,8 @@ class Arbitro extends Pessoa implements IMC{
                ."\nNome: $this->nome"
                .($this->idade ? "\nIdade: $this->idade" : "")
                ."\nPessoa: $this->peso"
-               ."\nAltura: $this->altura";
+               ."\nAltura: $this->altura"
+			   ."\nCargo: $this->cargo";
 
 		$saida .= (isset($this->imc))
 				?"\nIMC: ".number_format($this->imc, 3)

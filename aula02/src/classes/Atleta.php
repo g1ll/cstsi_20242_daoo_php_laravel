@@ -38,7 +38,7 @@ class Atleta extends Pessoa implements IMC{
 	public function showImc():void
 	{
 		if(is_numeric($this->imc))
-			echo "\nO IMC do $this->nome é: " . number_format($this->imc, 2) . "\n";
+			echo "\nO IMC do Atleta  $this->nome é: " . number_format($this->imc, 2) . "\n";
 	}
 
 	public function setAltura(float $altura){

@@ -42,6 +42,7 @@ class ProdutoController extends Controller
             }
             return new ProdutoStoredResource(Produto::create($newProduto));
         }catch (Exception $error){
+            //Excluir a imagem caso tenha sido salva
             $this->errorHandler('Erro ao criar novo produto!!!',$error);
         }
     }
@@ -77,7 +78,8 @@ class ProdutoController extends Controller
                 $newProduto['imagem'] = $fileName;
             }
             $produto->update($newProduto);
-            return new ProdutoUpdatedResource($produto);
+            return (new ProdutoResource($produto))
+                    ->additional(["message" => "Produto atualizado com sucesso!!!"]);
         } catch (Exception $error) {
             return $this->errorHandler("Erro ao atualizar produto!!", $error);
         }
